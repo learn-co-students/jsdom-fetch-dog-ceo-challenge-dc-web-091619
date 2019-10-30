@@ -29,13 +29,16 @@ function fetchDogBreeds(){
 }
 
 function dogBreeds(array){
-  //selection value
+  const breedList = document.getElementById('dog-breeds');
+  breedList.innerHTML = "";
 
-   const breedList = document.getElementById('dog-breeds');
-   breedList.innerHTML = "";
-  
+  if (array.length === 0){
+    let errorMsg = document.createElement('p');
+    let selectedLetter = document.getElementById('breed-dropdown').value 
+    errorMsg.innerHTML = `No record of dog breeds starting with the letter "<em>${selectedLetter}</em>"`
+    breedList.append(errorMsg)
+  } else {
     array.forEach(function(element){
-
       let newLi = document.createElement('li');
       newLi.innerText = element[0].toUpperCase() + element.slice(1);
 
@@ -43,6 +46,7 @@ function dogBreeds(array){
 
       breedList.appendChild(newLi);
     })
+  }
 }
 
 function changeColor(){
@@ -53,13 +57,10 @@ function changeColor(){
 }
 
 function filterBreeds(json){
-  
   let testArray = Object.keys(json.message);
   // let testArray = Object.keys(json.message)
   
   let selectedLetter = document.getElementById('breed-dropdown').value 
-
-  console.log('got to filter breed')
   
   if (selectedLetter === "") {
     dogBreeds(testArray)
@@ -67,8 +68,4 @@ function filterBreeds(json){
     let filteredArray = testArray.filter(breed => breed[0] === selectedLetter)
     dogBreeds(filteredArray) 
   }
-
-
-
 }
-
