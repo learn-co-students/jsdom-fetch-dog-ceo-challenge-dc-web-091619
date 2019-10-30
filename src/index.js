@@ -25,7 +25,6 @@ function fetchDogBreeds(){
   return fetch('https://dog.ceo/api/breeds/list/all')
   .then(response =>  response.json())
   .then(json => filterBreeds(json));
-
 }
 
 function dogBreeds(array){
