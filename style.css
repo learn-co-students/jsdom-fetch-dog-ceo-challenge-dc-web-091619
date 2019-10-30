@@ -1,0 +1,12 @@
+.colorChanged {
+    color:purple;
+}
+
+.bolded {
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}
